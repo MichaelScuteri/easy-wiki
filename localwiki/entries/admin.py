@@ -1,4 +1,5 @@
 from django.contrib import admin
-from .models import WikiPage #import all models from our directory
+from .models import WikiPage, WikiImage
 
 admin.site.register(WikiPage)
+admin.site.register(WikiImage)

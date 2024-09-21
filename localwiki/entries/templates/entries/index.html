@@ -1,13 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'entries/styles.css' %}">
     <title>Wiki</title>
 </head>
 <body>
+<div class="wiki-index">
     {% for page in pages %}
         <a href="{% url 'entry-page' page.slug %}">{{ page.title }}</a>
     {% endfor %}
+</div>
 </body>
 </html>

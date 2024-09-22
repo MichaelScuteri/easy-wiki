@@ -1,14 +1,13 @@
+{% extends "entries/layout.html" %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'entries/styles.css' %}">
-    <script src="{% static 'entries/js/file_upload.js' %}"></script>
     <title>Upload</title>
 </head>
-<body>
+{% block body %}
     <div class="container">
         <h1 class="Upload-Header">Upload Wiki Entry</h1>
         <form method="POST" enctype="multipart/form-data">
@@ -37,5 +36,5 @@
             </div>
         </form> 
     </div>
-</body>
+{% endblock %}
 </html>

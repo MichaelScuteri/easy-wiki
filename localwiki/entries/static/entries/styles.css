@@ -1,11 +1,64 @@
 :root {
-    background-color: rgb(21, 21, 21);
+    --background-color-dark: rgb(21, 21, 21);
+    --text-color-dark: white;
+    --primary-color-dark: #5f10e9;
+    --primary-color-trans-dark: #6010e975;
+    --hover-color-dark: #4d0cba;
+    --pre-background-dark: black;
+    --pre-text-color-dark: white;
+    --upload-area-background-color-dark: rgb(30, 30, 30);
+    --upload-area-border-color-dark: white;
+    --button-text-color-dark: white;
+    --boxshadow-color-dark: #000000ae;
+    --border-color-dark: white;
+
+    --background-color-light: rgb(245, 245, 245);
+    --text-color-light: black;
+    --primary-color-light: #6200ea;
+    --primary-color-trans-light: #6010e975;
+    --hover-color-light: #4e00b3;
+    --pre-background-light: rgb(61, 61, 61);
+    --pre-text-color-light: white;
+    --upload-area-background-color-light: rgb(238, 238, 238);
+    --upload-area-border-color-light: rgb(144, 144, 144);
+    --button-text-color-light: white;
+    --boxshadow-color-light: #8888889b;
+    --border-color-light: #6200ea;
+
+    /* Set default (dark mode) */
+    --background-color: var(--background-color-dark);
+    --text-color: var(--text-color-dark);
+    --primary-color: var(--primary-color-dark);
+    --primary-color-trans: var(--primary-color-trans-dark);
+    --hover-color: var(--hover-color-dark);
+    --pre-background: var(--pre-background-dark);
+    --pre-text-color: var(--pre-text-color-dark);
+    --upload-area-background-color: var(--upload-area-background-color-dark);
+    --upload-area-border-color: var(--upload-area-border-color-dark);
+    --button-text-color: var(--button-text-color-dark);
+    --boxshadow-color: var(--boxshadow-color-dark);
+    --border-color: var(--border-color-dark);
+}
+
+.light-mode {
+    --background-color: var(--background-color-light);
+    --text-color: var(--text-color-light);
+    --primary-color: var(--primary-color-light);
+    --primary-color-trans: var(--primary-color-trans-light)
+    --hover-color: var(--hover-color-light);
+    --pre-background: var(--pre-background-light);
+    --pre-text-color: var(--pre-text-color-light);
+    --upload-area-background-color: var(--upload-area-background-color-light);
+    --upload-area-border-color: var(--upload-area-border-color-light);
+    --button-text-color: var(--button-text-color-light);
+    --boxshadow-color: var(--boxshadow-color-light);
+    --border-color: var(--border-color-light);
 }
 
 body {
-    background-color: rgb(21, 21, 21);
+    background-color: var(--background-color);
+    color: var(--text-color);
     font-family: Arial, sans-serif;
-    color: white;
 }
 
 h1 {
@@ -21,15 +74,15 @@ p {
 }
 
 pre {
-    background-color: #000000;
-    color: white;
+    background-color: var(--pre-background);
+    color: var(--pre-text-color);
     padding: 20px;
     border-radius: 4px;
     overflow-x: auto;
 }
 
 a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
 }
 
@@ -79,10 +132,16 @@ a {
 }
 
 input[id="title"] {
-    border: none;
+    border-color: var(--border-color);
+    outline: none;
+    box-shadow:  0px 2px 5px 4px var(--boxshadow-color);
     width: 500px;
     padding: 10px;
     border-radius: 4px;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .uploads {
@@ -98,7 +157,6 @@ input[id="title"] {
 .upload-markdown,
 .upload-images {
     width: 100%;
-    color: black;
     display: flex;
     gap: 10px;
     flex-direction: column;
@@ -113,9 +171,9 @@ input[id="title"] {
     justify-content: space-between;
     align-items: center;
     gap: 80px;
-    background-color: rgb(30, 30, 30);
+    background-color: var(--upload-area-background-color);
     border-radius: 10px;
-    border: white solid 1.5px;
+    border: var(--border-color) solid 1.5px;
     border-style: dashed;
     padding: 20px;
     margin-top: 10px;
@@ -135,9 +193,9 @@ input[id="title"] {
 
 button {
     margin-top: -35px;
-    background-color: #5f10e9;
+    background-color: var(--primary-color);
     font-size: 16px;
-    color: white;
+    color: var(--button-text-color);
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
@@ -146,7 +204,7 @@ button {
 }
 
 button:hover {
-    background-color: #4d0cba; /* Darken on hover */
+    background-color: var(--hover-color); 
 }
 
 input[type="file"] {
@@ -157,7 +215,7 @@ input[type="file"] {
     max-width: 330px;
     padding: 5px; 
     margin-left: -70px;
-    color: rgb(225, 225, 225); 
+    color: var(--text-color);
     flex-grow: 1; 
     overflow: hidden; 
     white-space: nowrap; 
@@ -165,8 +223,8 @@ input[type="file"] {
 }
 
 .browse {
-    background-color: #5f10e9;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -174,5 +232,21 @@ input[type="file"] {
 }
 
 .browse:hover {
-    background-color: #4d0cba; /* Darken on hover */
+    background-color: var(--hover-color); 
+}
+
+.mode-toggle {
+    position: fixed; /* Make it stay in a fixed position on the screen */
+    right: 30px;     /* Distance from the right side of the screen */
+    top: 55px;       /* Distance from the top of the screen */
+    background-color: transparent;
+    cursor: pointer; /* Make it clear it's clickable */
+    box-shadow: inset 0px 0px 6px rgb(48, 48, 48);
+    border-radius: 100px;
+}
+
+.mode-toggle:hover {
+    background-color: transparent;
+    border-radius: 100px;
+    box-shadow: inset 0px 1px 5px 4px var(--boxshadow-color);
 }

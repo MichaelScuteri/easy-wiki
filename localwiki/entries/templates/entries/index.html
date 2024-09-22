@@ -1,3 +1,4 @@
+{% extends "entries/layout.html" %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -7,11 +8,11 @@
     <link rel="stylesheet" href="{% static 'entries/styles.css' %}">
     <title>Wiki</title>
 </head>
-<body>
+{% block body%}
 <div class="wiki-index">
     {% for page in pages %}
         <a href="{% url 'entry-page' page.slug %}">{{ page.title }}</a>
     {% endfor %}
 </div>
-</body>
+{% endblock %}
 </html>

@@ -1,40 +1,45 @@
 {% extends "entries/layout.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload</title>
-</head>
 {% block body %}
-    <div class="container">
-        <h1 class="Upload-Header">Upload Wiki Entry</h1>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="upload-title">
-                <input type="text" id="title" name="title" placeholder="Wiki Title">
-            </div
-            <div class="uploads">
-                <label>Markdown File</label>
-                <label for="markdown" class="upload-area">
-                    <input class="file-input" type="file" id="markdown" name="markdown">
-                    <img class="icon" src="{% static 'entries/images/icons/file.svg' %}">
-                    <span class="file-name">Upload your markdown file to create wiki entry</span>
-                    <span class="browse">Browse</span>
-                </label>
-                <label>Images</label>
-                <label for="images" class="upload-area">
-                    <input class="file-input" type="file" id="images" name="images" multiple>
-                    <img class="icon" src="{% static 'entries/images/icons/image.svg' %}">
-                    <span class="file-name">Upload all images used in your markdown file</span>
-                    <span class="browse">Browse</span>
-                </label>
-            </div>
-            <div class="upload-button">
-                <button type="submit">Upload</button>
-            </div>
-        </form> 
+<div class="upload-header"> 
+    <h1>Upload Wiki Entry</h1>
+</div>
+<div class="upload-container">
+    <div class="error-message">
+        {% if error %}
+            <img class="error-icon" src="{% static 'entries/images/icons/error.svg' %}"> 
+            {{ error }}
+        {% endif %}
     </div>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="upload-title">
+            <input type="text" id="title" name="title" placeholder="Wiki Title">
+        </div
+        <div class="uploads">
+            <label>Markdown File</label>
+            <label for="markdown" class="upload-area">
+                <input class="file-input" type="file" id="markdown" name="markdown">
+                <img id="file-icon" class="icon" src="{% static 'entries/images/icons/file.svg' %}" 
+                data-icon-light-src="{% static 'entries/images/icons/file.svg' %}"
+                data-icon-dark-src="{% static 'entries/images/icons/file-black.svg' %}" />
+                <span class="file-name">Upload your markdown file to create wiki entry</span>
+                <span class="browse">Browse</span>
+            </label>
+            <label>Images</label>
+            <label for="images" class="upload-area">
+                <input class="file-input" type="file" id="images" name="images" multiple>
+                <img id="image-icon" class="icon" src="{% static 'entries/images/icons/image.svg' %}"
+                data-icon-light-src="{% static 'entries/images/icons/image.svg' %}"
+                data-icon-dark-src="{% static 'entries/images/icons/image-black.svg' %}" />
+                <span class="file-name">Upload all images used in your markdown file</span>
+                <span class="browse">Browse</span>
+            </label>
+        </div>
+        <div class="upload-button">
+            <button type="submit">Upload</button>
+        </div>
+    </form> 
+</div>
 {% endblock %}
 </html>

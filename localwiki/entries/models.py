@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils.text import slugify
 import markdown2
 import re
+import os
 
 class WikiPage(models.Model):
     title = models.CharField(max_length=200)
@@ -15,6 +16,13 @@ class WikiPage(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
+        try:
+            this = WikiPage.objects.get(id=self.id)
+            if this.markdown_file != self.markdown_file:
+                if os.path.isfile(this.markdown_file.path):
+                    os.remove(this.markdown_file.path)
+        except WikiPage.DoesNotExist:
+            pass
         if not self.slug:
             self.slug = slugify(self.title)
         super(WikiPage, self).save(*args, **kwargs)

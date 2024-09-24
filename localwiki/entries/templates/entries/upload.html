@@ -2,7 +2,11 @@
 {% load static %}
 {% block body %}
 <div class="upload-header"> 
-    <h1>Upload Wiki Entry</h1>
+    {% if page %}
+        <h1>Update Wiki Entry</h1>
+    {% else %}
+        <h1>Upload Wiki Entry</h1>
+    {% endif %}
 </div>
 <div class="upload-container">
     <div class="error-message">
@@ -14,10 +18,9 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="upload-title">
-            <input type="text" id="title" name="title" placeholder="Wiki Title">
-        </div
+            <input type="text" id="title" name="title" value="{% if page %}{{ page.title }}{% else %}{{ '' }}{% endif %}" placeholder="Wiki Title">
+        </div>
         <div class="uploads">
-            <label>Markdown File</label>
             <label for="markdown" class="upload-area">
                 <input class="file-input" type="file" id="markdown" name="markdown">
                 <img id="file-icon" class="icon" src="{% static 'entries/images/icons/file.svg' %}" 
@@ -26,7 +29,6 @@
                 <span class="file-name">Upload your markdown file to create wiki entry</span>
                 <span class="browse">Browse</span>
             </label>
-            <label>Images</label>
             <label for="images" class="upload-area">
                 <input class="file-input" type="file" id="images" name="images" multiple>
                 <img id="image-icon" class="icon" src="{% static 'entries/images/icons/image.svg' %}"
@@ -37,7 +39,7 @@
             </label>
         </div>
         <div class="upload-button">
-            <button type="submit">Upload</button>
+            <button type="submit">{% if page %}Update{% else %}Create{% endif %}</button>
         </div>
     </form> 
 </div>

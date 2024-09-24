@@ -2,10 +2,18 @@
 {% load static %}
 {% block body%}
 <div class="wiki-index">
-    {% for page in pages %}
-        <a class="wiki-entry" href="{% url 'entry-page' page.slug %}">{{ page.title }}</a>
-    {% endfor %}
+    <div class="upload-title">
+        <input type="text" id="search" placeholder="Search">
+    </div>
+    <div class="wiki-entries">
+        {% if pages %}
+            {% for page in pages %}
+                <a class="wiki-entry" href="{% url 'entry-page' page.slug %}">{{ page.title }}</a>
+            {% endfor %}
+        {% else %}
+            <h2>No Wiki Entries</h2>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
-</body
 </html>

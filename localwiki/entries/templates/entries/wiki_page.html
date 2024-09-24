@@ -10,6 +10,11 @@
 </head>
 {% block body %}
     <div class="wiki-content">
+        <div class="update-page">
+            <a href="{% url 'upload' page.slug %}">
+                <button class="small-link">Update</button>
+            </a>
+        </div>
         <div class="title">
             <h1>{{ page.title }}</h1>
         </div>

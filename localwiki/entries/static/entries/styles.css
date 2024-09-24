@@ -55,6 +55,10 @@
     --border-color: var(--border-color-light);
 }
 
+/*----------------------------------------------------------------
+----------------------HTML Styling--------------------------------
+----------------------------------------------------------------*/
+
 body {
     background-color: var(--background-color);
     color: var(--text-color);
@@ -87,67 +91,25 @@ a {
     text-decoration: none;
 }
 
-a[class="wiki-entry"] {
-    font-size: 20px;
+button {
+    margin-top: -35px;
+    background-color: var(--primary-color);
+    font-size: 16px;
+    color: var(--button-text-color);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap; 
 
     &:hover {
-        color: var(--primary-color);
+        background-color: var(--hover-color);
     }
 }
 
-.wiki-index {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    width: auto;
-    gap: 25px;
-    max-width: 600px;
-    margin: 0 auto;
-    margin-top: 120px;
-    padding: 20px;
-}
-
-.wiki-content {
-    background-color: var(--upload-area-background-color);
-    border-radius: 10px;
-    box-shadow: 0px 2px 15px 6px var(--boxshadow-color);
-    max-width: 800px;
-    margin: 0 auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    padding: 20px;
-}
-
-.wiki-content img {
-    display: block;
-    width: 75%;
-    margin-bottom: 20px;
-}
-
-.page-content {
-    padding: 20px;
-}
-
-.title {
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-bottom: -25px;
-    margin-top: -5px;
-}
-
-.upload-header {
-    text-align: center;
-    margin-top: 120px;
-    margin-bottom: -30px;
-}
-
-.error-message {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: red;
-    text-align: center;
-}
+/*----------------------------------------------------------------
+----------------------Header Styling------------------------------
+----------------------------------------------------------------*/
 
 .header-container {
     position: fixed;
@@ -169,6 +131,148 @@ a[class="wiki-entry"] {
     }
 }
 
+.right-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-right: 60px;
+}
+
+.mode-toggle {  
+    position: relative;  
+    display: flex;
+    align-items: center;
+    margin-top: 0px;
+    background-color: transparent;
+    cursor: pointer; 
+    box-shadow: inset 0px 0px 6px rgb(48, 48, 48);
+    border-radius: 100px;
+
+    &:hover {
+        background-color: transparent;
+        border-radius: 100px;
+        box-shadow: inset 0px 1px 5px 4px var(--boxshadow-color);
+    }
+}
+
+.button-link {
+    position: relative;
+    background-color: var(--primary-color);
+    font-size: 16px;
+    color: var(--button-text-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none; 
+    border: none; 
+
+    &:hover {
+        background-color: var(--hover-color); 
+    }
+}
+
+/*----------------------------------------------------------------
+----------------------Index Styling-------------------------------
+----------------------------------------------------------------*/
+
+a[class="wiki-entry"] {
+    font-size: 18px;
+
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+
+.wiki-index {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: auto;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 120px;
+}
+
+.wiki-entries {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: auto;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+input[id="search"] {
+    box-sizing: border-box;
+    border: 1.5px solid rgba(255, 255, 255, 0.128); 
+    color: var(--text-color);
+    background: var(--upload-area-background-color);
+    outline: none;
+    box-shadow: 0px 2px 5px 4px var(--boxshadow-color);
+    font-size: 16px;
+    width: 500px;
+    height: 25px;
+    padding: 20px;
+    border-radius: 4px;
+
+    &:focus {
+        outline: none; 
+        border: 1.5px solid;
+        border-color: var(--primary-color);
+    }
+}
+
+/*----------------------------------------------------------------
+----------------------Content Page Styling------------------------
+----------------------------------------------------------------*/
+
+
+.wiki-content {
+    background-color: var(--upload-area-background-color);
+    border-radius: 10px;
+    box-shadow: 0px 2px 15px 6px var(--boxshadow-color);
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 20px;
+}
+
+.page-content img {
+    display: block;
+    max-width: 100%;
+    width: 70%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.page-content {
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: -25px;
+    margin-top: -5px;
+}
+
+.update-page {
+    text-align: right;
+}
+
+.small-link {
+    font-size: 12px;
+}
+
+/*----------------------------------------------------------------
+----------------------Upload Page Styling-------------------------
+----------------------------------------------------------------*/
+
 .upload-container {
     display: flex;
     justify-content: center;
@@ -177,6 +281,12 @@ a[class="wiki-entry"] {
     margin: 0 auto;
     padding: 40px;
     gap: 20px;
+}
+
+.upload-header {
+    text-align: center;
+    margin-top: 120px;
+    margin-bottom: -30px;
 }
 
 .upload-title {
@@ -206,14 +316,23 @@ input[id="title"] {
     }
 }
 
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: red;
+    text-align: center;
+    margin-top: -10px;
+}
+
 .uploads {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
-    padding-top: 50px;
+    gap: 10px;
+    padding-bottom: 40px;
 }
 
 .upload-markdown,
@@ -239,7 +358,6 @@ input[id="title"] {
     border: var(--border-color) solid 1.5px;
     border-style: dashed;
     padding: 20px;
-    margin-top: 10px;
     margin-bottom: 20px;
 
     &:hover {
@@ -251,23 +369,7 @@ input[id="title"] {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 20px;
-}
-
-button {
-    margin-top: -35px;
-    background-color: var(--primary-color);
-    font-size: 16px;
-    color: var(--button-text-color);
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    white-space: nowrap; 
-}
-
-button:hover {
-    background-color: var(--hover-color); 
+    margin-top: 10px;
 }
 
 input[type="file"] {
@@ -278,6 +380,7 @@ input[type="file"] {
     max-width: 330px;
     padding: 5px; 
     margin-left: -70px;
+    margin-right: -60px;
     color: var(--text-color);
     flex-grow: 1; 
     overflow: hidden; 
@@ -292,47 +395,8 @@ input[type="file"] {
     border-radius: 5px;
     cursor: pointer;
     white-space: nowrap;
-}
-
-.browse:hover {
-    background-color: var(--hover-color); 
-}
-
-.right-header {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    margin-right: 60px;
-}
-
-.button-link {
-    position: relative;
-    background-color: var(--primary-color);
-    font-size: 16px;
-    color: var(--button-text-color);
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    white-space: nowrap;
-    text-decoration: none; 
-    border: none; 
 
     &:hover {
-        background-color: var(--hover-color); 
-    }
-}
-
-.mode-toggle {  
-    position: relative;  
-    margin-top: 0px;
-    background-color: transparent;
-    cursor: pointer; 
-    box-shadow: inset 0px 0px 6px rgb(48, 48, 48);
-    border-radius: 100px;
-
-    &:hover {
-        background-color: transparent;
-        border-radius: 100px;
-        box-shadow: inset 0px 1px 5px 4px var(--boxshadow-color);
+        background-color: var(--hover-color);
     }
 }

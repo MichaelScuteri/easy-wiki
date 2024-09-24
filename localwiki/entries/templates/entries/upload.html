@@ -26,15 +26,15 @@
                 <img id="file-icon" class="icon" src="{% static 'entries/images/icons/file.svg' %}" 
                 data-icon-light-src="{% static 'entries/images/icons/file.svg' %}"
                 data-icon-dark-src="{% static 'entries/images/icons/file-black.svg' %}" />
-                <span class="file-name">Upload your markdown file to create wiki entry</span>
+                <span class="file-name">Upload markdown file to {% if page %}update wiki entry{% else %}create wiki entry{% endif %}</span>
                 <span class="browse">Browse</span>
             </label>
             <label for="images" class="upload-area">
                 <input class="file-input" type="file" id="images" name="images" multiple>
                 <img id="image-icon" class="icon" src="{% static 'entries/images/icons/image.svg' %}"
                 data-icon-light-src="{% static 'entries/images/icons/image.svg' %}"
-                data-icon-dark-src="{% static 'entries/images/icons/image-black.svg' %}" />
-                <span class="file-name">Upload all images used in your markdown file</span>
+                data-icon-dark-src="{% static 'entries/images/icons/image-black.svg' %}"/>
+                <span class="file-name">Upload {% if page %}any new images in your markdown file{% else %}all images used in your markdown file{% endif %}</span>
                 <span class="browse">Browse</span>
             </label>
         </div>

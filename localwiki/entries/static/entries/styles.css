@@ -258,11 +258,13 @@ input[id="search"] {
     padding-left: 20px;
     padding-right: 20px;
     margin-bottom: -25px;
-    margin-top: -5px;
+    margin-top: 0px;
 }
 
 .update-page {
     text-align: right;
+    margin-top: -5px;
+    margin-right: -5px;
 }
 
 .small-link {

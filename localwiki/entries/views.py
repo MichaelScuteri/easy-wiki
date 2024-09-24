@@ -41,11 +41,11 @@ def upload(request, slug=None):
                 return render(request, "entries/upload.html", {"error": "Title and Markdown file are required."})
             else:
                 page = WikiPage.objects.create(title=title, markdown_file=markdown)
+                if images:
+                    for image in images:
+                        WikiImage.objects.create(page=page, image=image)
             
-                for image in images:
-                    WikiImage.objects.create(page=page, image=image)
-            
-            return redirect(wiki_page.get_absolute_url())
+                return redirect(page.get_absolute_url())
     
     return render(request, "entries/upload.html", {"page": page})
 

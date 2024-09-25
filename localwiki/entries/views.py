@@ -50,7 +50,11 @@ def upload(request, slug=None):
     return render(request, "entries/upload.html", {"page": page})
 
 def delete(request, slug):
-    pass
+    page = get_object_or_404(WikiPage, slug=slug)
+    
+    if request.method == "POST":
+        page.delete()
+        return redirect('index')
 
 
 

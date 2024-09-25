@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 from django.utils.text import slugify
 import markdown2
 import re
@@ -52,3 +54,15 @@ class WikiImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.wiki_page.title}"
+    
+@receiver(pre_delete, sender=WikiPage)
+def delete_markdown_file(sender, instance, **kwargs):
+    if instance.markdown_file:
+        if os.path.isfile(instance.markdown_file.path):
+            os.remove(instance.markdown_file.path)
+
+@receiver(pre_delete, sender=WikiImage)
+def delete_wiki_image_file(sender, instance, **kwargs):
+    if instance.image:
+        if os.path.isfile(instance.image.path):
+            os.remove(instance.image.path)

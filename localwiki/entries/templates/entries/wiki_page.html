@@ -9,13 +9,27 @@
     <title>{{ page.title }}</title>
 </head>
 {% block body %}
+        <div class="delete-popup">
+            <div class="delete-popup-elements">
+                <h2>Are you sure you want to delete this page?</h2>
+                <div class="delete-options">
+                    <form method="POST" action="{% url 'delete' page.slug %}">
+                        {% csrf_token %}
+                        <button type="submit" class="button-link" id="delete">Delete</button>
+                    </form>
+                    <a>
+                        <button class="button-link" id="btn-cancel">Cancel</button>
+                    </a>
+                </div>
+            </div>
+        </div>
     <div class="wiki-content">
         <div class="update-page">
             <a href="{% url 'upload' page.slug %}">
                 <button class="small-link" id="btn-blue">Update</button>
             </a>
-            <a href="{% url 'upload' page.slug %}">
-                <button class="small-link" id="btn-red">Delete</button>
+            <a>
+                <button class="small-button" id="btn-delete">Delete</button>
             </a>
         </div>
         <div class="title">

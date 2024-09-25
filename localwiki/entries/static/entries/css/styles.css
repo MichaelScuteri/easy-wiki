@@ -13,8 +13,9 @@
     --button-text-color-dark: white;
     --boxshadow-color-dark: #0c0c0cae;
     --border-color-dark: white;
+    --code-background-color-dark: #121212;
 
-    --background-color-light: rgb(245, 245, 245);
+    --background-color-light: rgb(239, 210, 210);
     --text-color-light: black;
     --primary-color-light: #6200ea;
     --primary-color-trans-light: #6010e975;
@@ -28,6 +29,7 @@
     --button-text-color-light: white;
     --boxshadow-color-light: #aaaaaa9b;
     --border-color-light: #aaaaaa9b;
+    --code-background-color-light: black;
 
     /* Set default (dark mode) */
     --background-color: var(--background-color-dark);
@@ -44,6 +46,7 @@
     --button-text-color: var(--button-text-color-dark);
     --boxshadow-color: var(--boxshadow-color-dark);
     --border-color: var(--border-color-dark);
+    --code-background-color: var(--code-background-color-dark);
 }
 
 .light-mode {
@@ -59,6 +62,7 @@
     --button-text-color: var(--button-text-color-light);
     --boxshadow-color: var(--boxshadow-color-light);
     --border-color: var(--border-color-light);
+    --code-background-color: var(--code-background-color-light);
 }
 
 /*----------------------------------------------------------------

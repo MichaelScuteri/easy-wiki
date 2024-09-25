@@ -32,9 +32,25 @@ class WikiPage(models.Model):
     def get_html_content(self):
         with open(self.markdown_file.path, 'r') as md_file:
             markdown_content = md_file.read()
-        updated_markdown = self._update_image_paths(markdown_content)
 
-        return markdown2.markdown(updated_markdown)
+        extras = ["fenced-code-blocks", "code-friendly"]
+
+        updated_markdown = self._update_image_paths(markdown_content)
+        code_blocks = re.findall(r'```([a-zA-Z]+)', updated_markdown)
+        html_content = markdown2.markdown(updated_markdown, extras=extras)
+        code_block_index = 0
+
+        def replacer(match):
+            nonlocal code_block_index
+            if code_block_index < len(code_blocks):
+                language = code_blocks[code_block_index]
+                code_block_index += 1
+                return f'<code class="language-{language}">'
+            else:
+                return '<code>'
+        html_content = re.sub(r'<code>', replacer, html_content)
+
+        return html_content
     
     def _update_image_paths(self, markdown_content):
         image_path_pattern = r'!\[.*?\]\((.*?)\)'

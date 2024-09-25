@@ -3,6 +3,8 @@
     --text-color-dark: white;
     --primary-color-dark: #5f10e9;
     --primary-color-trans-dark: #6010e975;
+    --negative-color-dark: red;
+    --negative-hover-color-dark: rgb(211, 0, 0);
     --hover-color-dark: #4d0cba;
     --pre-background-dark: black;
     --pre-text-color-dark: white;
@@ -17,6 +19,8 @@
     --primary-color-light: #6200ea;
     --primary-color-trans-light: #6010e975;
     --hover-color-light: #4e00b3;
+    --negative-color-light: red;
+    --negative-hover-color-light: rgb(211, 0, 0);
     --pre-background-light: black;
     --pre-text-color-light: white;
     --upload-area-background-color-light: rgb(238, 238, 238);
@@ -30,6 +34,8 @@
     --text-color: var(--text-color-dark);
     --primary-color: var(--primary-color-dark);
     --primary-color-trans: var(--primary-color-trans-dark);
+    --negative-color: var(--negative-color-dark);
+    --negative-hover-color: var(--negative-hover-color-dark);
     --hover-color: var(--hover-color-dark);
     --pre-background: var(--pre-background-dark);
     --pre-text-color: var(--pre-text-color-dark);
@@ -95,6 +101,38 @@ button {
     margin-top: -35px;
     background-color: var(--primary-color);
     font-size: 16px;
+    color: var(--button-text-color);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap; 
+
+    &:hover {
+        background-color: var(--hover-color);
+    }
+}
+
+button[id="btn-red"] {
+    margin-top: -35px;
+    background-color: var(--negative-color);
+    font-size: 12px;
+    color: var(--button-text-color);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap; 
+
+    &:hover {
+        background-color: var(--negative-hover-color);
+    }
+}
+
+button[id="btn-blue"] {
+    margin-top: -35px;
+    background-color: var(--primary-color);
+    font-size: 12px;
     color: var(--button-text-color);
     border: none;
     padding: 5px 10px;
@@ -262,7 +300,9 @@ input[id="search"] {
 }
 
 .update-page {
-    text-align: right;
+    display: flex;
+    gap: 10px;
+    justify-content: right;
     margin-top: -5px;
     margin-right: -5px;
 }
@@ -328,8 +368,9 @@ input[id="title"] {
 }
 
 .uploads {
-    width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     flex-wrap: wrap;
@@ -339,7 +380,8 @@ input[id="title"] {
 
 .upload-markdown,
 .upload-images {
-    width: 100%;
+    text-align: center;
+    width: auto;
     display: flex;
     gap: 10px;
     flex-direction: column;
@@ -353,8 +395,9 @@ input[id="title"] {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    width: auto;
     height: 40px;
-    gap: 80px;
+    gap: 10px;
     background-color: var(--upload-area-background-color);
     border-radius: 10px;
     border: var(--border-color) solid 1.5px;
@@ -379,12 +422,10 @@ input[type="file"] {
 }
 
 .file-name {
-    width: 380px;
+    width: 320px;
     padding: 5px; 
-    margin-left: -70px;
-    margin-right: -60px;
-    color: var(--text-color);
-    flex-grow: 1; 
+    margin-left: -60px;
+    color: var(--text-color); 
     overflow: hidden; 
     white-space: nowrap; 
     text-overflow: ellipsis; 

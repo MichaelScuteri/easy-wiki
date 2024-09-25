@@ -12,7 +12,10 @@
     <div class="wiki-content">
         <div class="update-page">
             <a href="{% url 'upload' page.slug %}">
-                <button class="small-link">Update</button>
+                <button class="small-link" id="btn-blue">Update</button>
+            </a>
+            <a href="{% url 'upload' page.slug %}">
+                <button class="small-link" id="btn-red">Delete</button>
             </a>
         </div>
         <div class="title">

@@ -49,6 +49,9 @@ def upload(request, slug=None):
     
     return render(request, "entries/upload.html", {"page": page})
 
+def delete(request, slug):
+    pass
+
 
 
 

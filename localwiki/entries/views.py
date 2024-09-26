@@ -43,7 +43,7 @@ def upload(request, slug=None):
                 page = WikiPage.objects.create(title=title, markdown_file=markdown)
                 if images:
                     for image in images:
-                        WikiImage.objects.create(page=page, image=image)
+                        WikiImage.objects.create(wiki_page=page, image=image)
             
                 return redirect(page.get_absolute_url())
     

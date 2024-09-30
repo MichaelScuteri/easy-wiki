@@ -22,10 +22,15 @@ Once all the python packages have been installed you can start running the app l
 ```
 python3 manage.py runserver
 ```
-Django will run the app on your lcoal host at: 127.0.0.1:8000. Navigate to this address and add /wiki to the end of the address.
+Django will run the app on your local host at: 127.0.0.1:8000. Navigate to this address and add /wiki to the end of the address.
 
 ```
 127.0.0.1:8000/wiki
+```
+To run the app to be accessible to other users on the network run
+
+```
+python3 manage.py runserver <Your-IP-Address>:<Port>
 ```
 
 ## Non-local Use
